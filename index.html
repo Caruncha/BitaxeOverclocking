@@ -103,7 +103,7 @@
   .axeos-value { font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--orange); }
   .axeos-unit { font-size:13px; color:var(--text-muted); margin-left:2px; }
 
-  .code-block { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:12px 0; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--green); overflow-x:auto; line-height:1.6; }
+  .code-block { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:12px 0; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--green); overflow-x:auto; line-height:1.6; white-space:pre; }
   .code-block .comment { color:var(--text-dim); }
   .code-block .cmd { color:var(--orange); }
   .code-block .param { color:var(--blue); }
@@ -259,7 +259,7 @@
       <p><strong>Pull vs Push airflow:</strong> Testing shows that in <em>pull</em> mode (fan pulling air through the heatsink rather than pushing), ASIC temperature drops an additional <strong>3.5°C</strong> at 1,000 MHz. Test both orientations after running the benchmark.</p>
     </div>
 
-    <h3>Copper shims (recommended)</h3>
+    <h3>Copper shims (optional)</h3>
     <p>The heatsink base measures 30×22mm but the BM1370 die is smaller. Placing two thin copper shims (0.3mm) on either side of the ASIC contact point distributes heat across all 4 heatpipes instead of just 2. Apply thermal paste on all contact surfaces.</p>
   </section>
 
@@ -345,19 +345,19 @@
     <p><strong>Prerequisites:</strong> Python 3.11 or higher, and your Bitaxe reachable on the local network.</p>
 
     <div class="code-block">
-<span class="comment"># 1. Clone the repository</span>
-git clone https://github.com/thomasKn/Bitaxe-Hashrate-Benchmark.git
+<span class="comment"># 1. Clone the repository</span><br>
+git clone https://github.com/thomasKn/Bitaxe-Hashrate-Benchmark.git <br>
 cd Bitaxe-Hashrate-Benchmark
 
-<span class="comment"># 2. Create and activate a virtual environment</span>
+<span class="comment">><br># 2. Create and activate a virtual environment</span><br>
 python -m venv venv
 
-<span class="comment"># On macOS / Linux:</span>
+<span class="comment"><br># On macOS / Linux:</span><br>
 source venv/bin/activate
-<span class="comment"># On Windows:</span>
+<span class="comment"><br># On Windows:</span><br>
 venv\Scripts\activate
 
-<span class="comment"># 3. Install dependencies</span>
+<span class="comment"><br># 3. Install dependencies</span><br>
 pip install -r requirements.txt
     </div>
 
@@ -365,11 +365,11 @@ pip install -r requirements.txt
     <p>Run the script with your Bitaxe's IP address. You can optionally specify a starting voltage and frequency.</p>
 
     <div class="code-block">
-<span class="comment"># Basic command (defaults: 500 MHz / 1,150 mV)</span>
+<span class="comment"># Basic command (defaults: 500 MHz / 1,150 mV)</span><br>
 <span class="cmd">python</span> bitaxe_hashrate_benchmark.py <span class="param">192.168.x.xxx</span>
 
-<span class="comment"># With custom starting parameters</span>
-<span class="cmd">python</span> bitaxe_hashrate_benchmark.py <span class="param">192.168.x.xxx</span> -v <span class="param">1175</span> -f <span class="param">600</span>
+<span class="comment"><br># With custom starting parameters</span>
+<span class="cmd"><br>python</span> bitaxe_hashrate_benchmark.py <span class="param">192.168.x.xxx</span> -v <span class="param">1175</span> -f <span class="param">600</span><br>
 
 <span class="comment"># Available options:</span>
 <span class="comment">#  -v, --voltage    Starting voltage in mV (default: 1150)</span>
@@ -444,10 +444,10 @@ pip install -r requirements.txt
 
     <h3>Docker alternative</h3>
     <div class="code-block">
-<span class="comment"># Build the image</span>
-docker build -t bitaxe-benchmark .
+<span class="comment"># Build the image</span><br>
+docker build -t bitaxe-benchmark .<br>
 
-<span class="comment"># Run the benchmark</span>
+<span class="comment"># Run the benchmark</span><br>
 docker run --rm bitaxe-benchmark <span class="param">192.168.x.xxx</span> -v <span class="param">1150</span> -f <span class="param">500</span>
     </div>
   </section>
