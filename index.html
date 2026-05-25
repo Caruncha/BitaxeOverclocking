@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tutoriel — Overclocking Bitaxe Gamma</title>
+<title>Tutorial — Overclocking Bitaxe Gamma</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --orange: #F97316;
     --orange-dark: #C2410C;
-    --orange-light: #FED7AA;
     --bg: #0F0E0C;
     --bg2: #1A1916;
     --bg3: #232220;
@@ -26,7 +25,6 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'IBM Plex Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; }
 
-  /* HERO */
   .hero { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 60px 40px 48px; position: relative; overflow: hidden; }
   .hero::before { content:''; position:absolute; top:-40px; right:-40px; width:300px; height:300px; background:radial-gradient(circle,rgba(249,115,22,0.12) 0%,transparent 70%); pointer-events:none; }
   .hero-tag { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--orange); letter-spacing:.12em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
@@ -38,7 +36,6 @@
   .badge { font-family:'IBM Plex Mono',monospace; font-size:12px; padding:5px 12px; border-radius:3px; border:1px solid var(--border); color:var(--text-muted); background:var(--bg3); }
   .badge.hot { border-color:var(--orange); color:var(--orange); background:rgba(249,115,22,0.08); }
 
-  /* TOC */
   .toc { background:var(--bg2); border:1px solid var(--border); border-radius:6px; margin:40px 40px 0; padding:24px 28px; }
   .toc-title { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--orange); letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; }
   .toc-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; }
@@ -46,7 +43,6 @@
   .toc-list li a:hover { color:var(--orange); }
   .toc-num { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-dim); min-width:20px; }
 
-  /* MAIN */
   main { padding:40px 40px 80px; max-width:900px; }
   .section { margin-bottom:56px; scroll-margin-top:24px; }
   .section-header { display:flex; align-items:baseline; gap:14px; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid var(--border); }
@@ -56,7 +52,6 @@
   p { color:var(--text-muted); margin-bottom:14px; }
   p strong { color:var(--text); font-weight:600; }
 
-  /* PARTS GRID */
   .parts-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px; }
   .part-card { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:16px 18px; position:relative; transition:border-color .2s; }
   .part-card:hover { border-color:var(--orange); }
@@ -70,21 +65,18 @@
   .tag-optional { background:rgba(251,191,36,0.1); color:var(--amber); border:1px solid rgba(251,191,36,0.3); }
   .tag-print { background:rgba(34,197,94,0.1); color:var(--green); border:1px solid rgba(34,197,94,0.3); }
 
-  /* CALLOUTS */
   .callout { border-left:3px solid var(--orange); background:rgba(249,115,22,0.06); border-radius:0 6px 6px 0; padding:14px 18px; margin:20px 0; }
   .callout.info { border-color:var(--blue); background:rgba(96,165,250,0.06); }
   .callout.warn { border-color:var(--amber); background:rgba(251,191,36,0.06); }
   .callout.danger { border-color:var(--red); background:rgba(239,68,68,0.06); }
   .callout p { margin:0; font-size:14px; }
 
-  /* STEPS */
   .steps-list { list-style:none; counter-reset:step; }
   .steps-list li { counter-increment:step; display:flex; gap:16px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--bg3); }
   .steps-list li:last-child { border-bottom:none; }
   .steps-list li::before { content:counter(step); font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; color:var(--orange); background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); border-radius:4px; min-width:32px; height:32px; display:flex; align-items:center; justify-content:center; margin-top:2px; flex-shrink:0; }
   .steps-list li .step-content p { margin-bottom:4px; font-size:15px; }
 
-  /* TABLES */
   .perf-table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; }
   .perf-table th { font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); padding:8px 12px; text-align:left; border-bottom:1px solid var(--border); }
   .perf-table td { padding:9px 12px; border-bottom:1px solid var(--bg3); color:var(--text-muted); font-size:13px; }
@@ -95,7 +87,6 @@
   .perf-table td.danger { color:var(--red); font-family:'IBM Plex Mono',monospace; }
   .perf-table tr:hover td { background:var(--bg2); }
 
-  /* WIRING */
   .wiring-block { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:20px 24px; margin:16px 0; }
   .wiring-row { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--bg3); font-size:14px; }
   .wiring-row:last-child { border-bottom:none; }
@@ -106,41 +97,39 @@
   .wire-arrow { color:var(--text-dim); font-size:18px; }
   .wire-desc { color:var(--text-muted); }
 
-  /* AXEOS CARDS */
   .axeos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0; }
   .axeos-card { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:14px 16px; text-align:center; }
   .axeos-label { font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--text-dim); margin-bottom:8px; }
   .axeos-value { font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--orange); }
   .axeos-unit { font-size:13px; color:var(--text-muted); margin-left:2px; }
 
-  /* BENCHMARK SECTION */
   .code-block { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:16px 20px; margin:12px 0; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--green); overflow-x:auto; line-height:1.6; }
   .code-block .comment { color:var(--text-dim); }
   .code-block .cmd { color:var(--orange); }
   .code-block .param { color:var(--blue); }
+
   .bench-flow { display:grid; grid-template-columns:1fr; gap:8px; margin:16px 0; }
   .bench-step { display:flex; align-items:flex-start; gap:14px; background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:14px 18px; }
   .bench-step-num { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--orange); background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25); border-radius:3px; padding:2px 8px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
   .bench-step-body { font-size:14px; color:var(--text-muted); }
   .bench-step-body strong { color:var(--text); }
+
   .config-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0; }
   .config-card { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:14px 18px; }
   .config-key { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--orange); margin-bottom:4px; }
   .config-val { font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:600; color:var(--text); }
   .config-desc { font-size:12px; color:var(--text-muted); margin-top:4px; }
 
-  /* TIPS */
   .tip-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
   .tip-card { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:16px 18px; }
   .tip-icon { font-size:20px; margin-bottom:8px; }
   .tip-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:6px; }
   .tip-body { font-size:13px; color:var(--text-muted); }
 
-  /* TOWER */
   .tower-section { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:24px; margin-top:12px; }
   .tower-section p { font-size:14px; }
 
-  footer { border-top:1px solid var(--border); padding:32px 40px; color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; display:flex; justify-content:space-between; align-items:center; }
+  footer { border-top:1px solid var(--border); padding:32px 40px; color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
 
   @media (max-width:680px) {
     .hero, main, .toc, footer { padding-left:20px; padding-right:20px; }
@@ -154,446 +143,442 @@
 <body>
 
 <div class="hero">
-  <div class="hero-tag">Guide complet · Bitcoin Mining DIY</div>
-  <h1>Overclocker un<br><span>Bitaxe Gamma</span><br>comme un pro</h1>
-  <p class="hero-sub">52Pi Low-Profile Plus, adaptateurs imprimés en 3D, alimentation industrielle Meanwell, et benchmark automatisé Python pour trouver le sweet spot parfait fréquence / voltage / chaleur.</p>
+  <div class="hero-tag">Complete Guide · Bitcoin Mining DIY</div>
+  <h1>Overclock a<br><span>Bitaxe Gamma</span><br>like a pro</h1>
+  <p class="hero-sub">52Pi Low-Profile Plus heatsink, 3D-printed adapters, Meanwell industrial PSU, and automated Python benchmark to find the perfect frequency / voltage / temperature sweet spot.</p>
   <div class="hero-badges">
-    <span class="badge hot">↑ jusqu'à ~2 Th/s</span>
-    <span class="badge">ASIC : BM1370</span>
-    <span class="badge">PSU : Meanwell LRS-100-5</span>
-    <span class="badge">Refroidissement : 52Pi Low-Profile Plus</span>
-    <span class="badge">Benchmark : Python automatisé</span>
+    <span class="badge hot">↑ up to ~2 Th/s</span>
+    <span class="badge">ASIC: BM1370</span>
+    <span class="badge">PSU: Meanwell LRS-100-5</span>
+    <span class="badge">Cooling: 52Pi Low-Profile Plus</span>
+    <span class="badge">Benchmark: automated Python</span>
   </div>
 </div>
 
 <nav class="toc">
-  <p class="toc-title">// Table des matières</p>
+  <p class="toc-title">// Table of contents</p>
   <ul class="toc-list">
-    <li><a href="#materiel"><span class="toc-num">01</span> Liste du matériel</a></li>
-    <li><a href="#impression3d"><span class="toc-num">02</span> Pièces à imprimer en 3D</a></li>
-    <li><a href="#refroidissement"><span class="toc-num">03</span> Montage du refroidissement</a></li>
-    <li><a href="#psu"><span class="toc-num">04</span> Câblage de l'alimentation</a></li>
-    <li><a href="#overclock"><span class="toc-num">05</span> Configuration initiale dans AxeOS</a></li>
-    <li><a href="#benchmark"><span class="toc-num">06</span> Script de benchmark Python</a></li>
-    <li><a href="#resultats"><span class="toc-num">07</span> Lire et appliquer les résultats</a></li>
-    <li><a href="#tour"><span class="toc-num">08</span> Tour quad (optionnel)</a></li>
-    <li><a href="#conseils"><span class="toc-num">09</span> Conseils & dépannage</a></li>
+    <li><a href="#parts"><span class="toc-num">01</span> Parts list</a></li>
+    <li><a href="#printing"><span class="toc-num">02</span> 3D-printed parts</a></li>
+    <li><a href="#cooling"><span class="toc-num">03</span> Cooling assembly</a></li>
+    <li><a href="#psu"><span class="toc-num">04</span> PSU wiring</a></li>
+    <li><a href="#axeos"><span class="toc-num">05</span> Initial AxeOS setup</a></li>
+    <li><a href="#benchmark"><span class="toc-num">06</span> Python benchmark script</a></li>
+    <li><a href="#results"><span class="toc-num">07</span> Reading & applying results</a></li>
+    <li><a href="#tower"><span class="toc-num">08</span> Quad cooling tower (optional)</a></li>
+    <li><a href="#tips"><span class="toc-num">09</span> Tips & troubleshooting</a></li>
   </ul>
 </nav>
 
 <main>
 
-  <!-- 01 MATÉRIEL -->
-  <section class="section" id="materiel">
-    <div class="section-header"><span class="section-num">01</span><h2>Liste du matériel</h2></div>
-    <p>Tout ce dont tu as besoin pour un Bitaxe Gamma overclockable avec refroidissement haute performance. Les liens pointent vers les meilleures sources disponibles.</p>
+  <!-- 01 PARTS -->
+  <section class="section" id="parts">
+    <div class="section-header"><span class="section-num">01</span><h2>Parts list</h2></div>
+    <p>Everything you need to build an overclockable Bitaxe Gamma with high-performance cooling. Links point to the best available sources.</p>
 
     <div class="parts-grid">
       <div class="part-card">
-        <span class="tag tag-required">Requis</span>
-        <p class="part-type">Mineur</p>
-        <p class="part-name">Bitaxe Gamma (puce BM1370)</p>
-        <p class="part-note">Shop AliExpress fiable, testé par la communauté.</p>
+        <span class="tag tag-required">Required</span>
+        <p class="part-type">Miner</p>
+        <p class="part-name">Bitaxe Gamma (BM1370 chip)</p>
+        <p class="part-note">Reliable AliExpress shop, community-tested.</p>
         <a href="https://www.aliexpress.com/item/1005008253485178.html" target="_blank">→ AliExpress</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-required">Requis</span>
-        <p class="part-type">Refroidissement</p>
-        <p class="part-name">Radiateur 52Pi Low-Profile Plus</p>
-        <p class="part-note">4 caloducs cuivre. Souvent en rupture localement et bien plus cher. Préférer AliExpress.</p>
+        <span class="tag tag-required">Required</span>
+        <p class="part-type">Cooling</p>
+        <p class="part-name">52Pi Low-Profile Plus heatsink</p>
+        <p class="part-note">4 copper heatpipes. Often out of stock locally and much more expensive. AliExpress is the better option.</p>
         <a href="https://www.aliexpress.com/item/1005007215720743.html" target="_blank">→ AliExpress</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-required">Requis</span>
-        <p class="part-type">Alimentation</p>
+        <span class="tag tag-required">Required</span>
+        <p class="part-type">Power supply</p>
         <p class="part-name">Meanwell LRS-100-5 (5V / 20A)</p>
-        <p class="part-note">PSU industrielle 5V. Capacité pour 2 Bitaxe simultanément. Impératif : bien choisir le modèle 5V.</p>
+        <p class="part-note">Industrial 5V PSU. Enough capacity for 2 Bitaxe simultaneously. Critical: make sure to get the 5V model.</p>
         <a href="https://www.amazon.ca/LRS-100-5-Switching-Supply-Enclosed-Machine/dp/B07DKCMJN9/" target="_blank">→ Amazon CA</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-required">Requis</span>
-        <p class="part-type">Consommable</p>
-        <p class="part-name">Pâte thermique haute performance</p>
-        <p class="part-note">Thermal Grizzly Kryonaut Extreme recommandée pour un transfert thermique optimal ASIC → radiateur.</p>
+        <span class="tag tag-required">Required</span>
+        <p class="part-type">Consumable</p>
+        <p class="part-name">High-performance thermal paste</p>
+        <p class="part-note">Thermal Grizzly Kryonaut Extreme recommended for optimal ASIC → heatsink heat transfer.</p>
         <a href="https://www.amazon.ca/s?k=thermal+grizzly+kryonaut" target="_blank">→ Amazon CA</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-print">À imprimer</span>
+        <span class="tag tag-print">3D Print</span>
         <p class="part-type">3D Print</p>
-        <p class="part-name">Adaptateur socket Low-Profile Plus</p>
-        <p class="part-note">Fixe le radiateur sur le PCB. Version robuste — utilise les vis fournies avec le radiateur.</p>
+        <p class="part-name">Low-Profile Plus socket adapter</p>
+        <p class="part-note">Mounts the heatsink on the Bitaxe PCB. Robust version — uses the screws included with the heatsink.</p>
         <a href="https://makerworld.com/fr/models/851631" target="_blank">→ MakerWorld</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-print">À imprimer</span>
+        <span class="tag tag-print">3D Print</span>
         <p class="part-type">3D Print</p>
-        <p class="part-name">Shroud ventilateur 60mm (Noctua)</p>
-        <p class="part-note">Adapte un Noctua NF-A6x15 60mm sur le radiateur prévu pour du 50mm. Crée une surpression bénéfique.</p>
+        <p class="part-name">60mm fan shroud (for Noctua)</p>
+        <p class="part-note">Adapts a Noctua NF-A6x15 60mm fan onto the heatsink's 50mm mounting. Creates beneficial airflow compression.</p>
         <a href="https://makerworld.com/fr/models/2122787" target="_blank">→ MakerWorld</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-optional">Optionnel</span>
-        <p class="part-type">Ventilateur</p>
+        <span class="tag tag-optional">Optional</span>
+        <p class="part-type">Fan</p>
         <p class="part-name">Noctua NF-A6x15 5V PWM</p>
-        <p class="part-note">Le meilleur ventilateur pour ce setup. Version 5V directement compatible avec la Meanwell. Silencieux et très efficace.</p>
+        <p class="part-note">Best fan for this setup. 5V version is directly compatible with the Meanwell PSU. Quiet and very effective.</p>
         <a href="https://www.amazon.ca/s?k=noctua+nf-a6x15+5v" target="_blank">→ Amazon CA</a>
       </div>
       <div class="part-card">
-        <span class="tag tag-optional">Optionnel</span>
-        <p class="part-type">Consommable</p>
-        <p class="part-name">Plaques de cuivre 0,3mm</p>
-        <p class="part-note">2 plaques posées sur la base du radiateur pour activer les 4 caloducs au lieu de 2. Gain thermique significatif.</p>
+        <span class="tag tag-optional">Optional</span>
+        <p class="part-type">Consumable</p>
+        <p class="part-name">0.3mm copper shims</p>
+        <p class="part-note">2 shims placed on the heatsink base to activate all 4 heatpipes instead of just 2. Significant thermal gain.</p>
         <a href="https://www.amazon.ca/s?k=copper+shim+0.3mm" target="_blank">→ Amazon CA</a>
       </div>
     </div>
 
     <div class="callout warn" style="margin-top:20px">
-      <p><strong>⚠ Câbles électriques :</strong> Récupère les câbles fournis avec chaque Bitaxe. Dénude les extrémités (~8mm) et connecte-les directement sur les bornes DC de la Meanwell. Calibre 16 AWG recommandé si tu refais tes propres câbles.</p>
+      <p><strong>⚠ Power cables:</strong> Reuse the cables included with each Bitaxe. Strip the ends (~8mm) and connect them directly to the Meanwell DC output terminals. 16 AWG wire gauge recommended if you make your own cables.</p>
     </div>
   </section>
 
-  <!-- 02 IMPRESSION 3D -->
-  <section class="section" id="impression3d">
-    <div class="section-header"><span class="section-num">02</span><h2>Pièces à imprimer en 3D</h2></div>
-    <p>Deux pièces imprimées sont nécessaires. Disponibles gratuitement sur MakerWorld pour usage privé et non-commercial.</p>
+  <!-- 02 3D PRINTING -->
+  <section class="section" id="printing">
+    <div class="section-header"><span class="section-num">02</span><h2>3D-printed parts</h2></div>
+    <p>Two printed parts are needed. Both are available for free on MakerWorld for private, non-commercial use.</p>
 
-    <h3>Pièce 1 — Adaptateur socket (Low-Profile Plus → Bitaxe)</h3>
-    <p>Fixe le radiateur 52Pi sur les points de montage du PCB. La version MakerWorld est bien plus solide que l'adaptateur d'origine — tu peux serrer les vis fournies avec le radiateur sans risquer la casse.</p>
+    <h3>Part 1 — Socket adapter (Low-Profile Plus → Bitaxe)</h3>
+    <p>Mounts the 52Pi heatsink on the PCB mounting points. The MakerWorld version is much sturdier than the original adapter — you can tighten the included screws without risking breakage.</p>
     <div class="callout info">
-      <p><strong>Matériau :</strong> Imprime en PETG ou ASA pour une meilleure résistance thermique. Le PLA peut se déformer dans un environnement chaud. Résolution 0,2mm, 3 périmètres minimum.</p>
+      <p><strong>Material:</strong> Print in PETG or ASA for better heat resistance. PLA can warp in a warm environment. 0.2mm resolution, at least 3 perimeters.</p>
     </div>
 
-    <h3>Pièce 2 — Shroud / conduit de ventilation 60mm</h3>
-    <p>Le radiateur est livré avec un ventilateur 50×50mm bruanteux et non-standard (3 broches micro). Le shroud permet de monter un Noctua NF-A6x15 60mm sur les pattes d'origine du radiateur. La réduction 50→60mm crée une surpression qui améliore notablement l'efficacité de refroidissement.</p>
+    <h3>Part 2 — 60mm fan shroud</h3>
+    <p>The heatsink ships with a noisy, non-standard 50×50mm fan (3-pin micro connector). The shroud lets you mount a Noctua NF-A6x15 60mm fan on the heatsink's original mounting brackets. The 50→60mm reduction compresses airflow and noticeably improves cooling efficiency.</p>
 
     <div class="callout">
-      <p><strong>Direction du flux — Pull vs Push :</strong> En mode <em>pull</em> (ventilateur qui tire l'air à travers le radiateur plutôt que de le pousser), la température ASIC baisse de <strong>3,5°C supplémentaires</strong> à 1 000 MHz. Teste les deux sur ton setup après le benchmark.</p>
+      <p><strong>Pull vs Push airflow:</strong> Testing shows that in <em>pull</em> mode (fan pulling air through the heatsink rather than pushing), ASIC temperature drops an additional <strong>3.5°C</strong> at 1,000 MHz. Test both orientations after running the benchmark.</p>
     </div>
 
-    <h3>Plaques de cuivre (recommandé)</h3>
-    <p>La base du radiateur fait 30×22mm mais le BM1370 est plus petit. En plaçant deux fines plaques de cuivre (0,3mm) de part et d'autre du contact ASIC, tu distribues la chaleur vers les 4 caloducs au lieu de 2 seulement. Applique de la pâte thermique sur toutes les surfaces de contact.</p>
+    <h3>Copper shims (recommended)</h3>
+    <p>The heatsink base measures 30×22mm but the BM1370 die is smaller. Placing two thin copper shims (0.3mm) on either side of the ASIC contact point distributes heat across all 4 heatpipes instead of just 2. Apply thermal paste on all contact surfaces.</p>
   </section>
 
-  <!-- 03 MONTAGE -->
-  <section class="section" id="refroidissement">
-    <div class="section-header"><span class="section-num">03</span><h2>Montage du refroidissement</h2></div>
-    <p>Le montage demande précision et propreté sur les surfaces thermiques. Suis ces étapes dans l'ordre, Bitaxe hors tension.</p>
+  <!-- 03 COOLING ASSEMBLY -->
+  <section class="section" id="cooling">
+    <div class="section-header"><span class="section-num">03</span><h2>Cooling assembly</h2></div>
+    <p>Assembly requires precision and clean thermal surfaces. Follow these steps in order with the Bitaxe powered off.</p>
 
     <ol class="steps-list">
-      <li><div class="step-content"><p><strong>Nettoyer l'ASIC</strong> — Retire le dissipateur d'usine s'il y en a un. Nettoie la surface du BM1370 avec de l'alcool isopropylique (90%+) et un coton-tige. Laisse sécher 60 secondes.</p></div></li>
-      <li><div class="step-content"><p><strong>Préparer les plaques de cuivre (optionnel)</strong> — Place les deux plaques 0,3mm de part et d'autre du centre de la base du radiateur. Applique une fine couche de pâte thermique entre les plaques et la base du radiateur.</p></div></li>
-      <li><div class="step-content"><p><strong>Appliquer la pâte thermique</strong> — Dépose une noisette de Thermal Grizzly Kryonaut Extreme au centre de la puce. Étale uniformément sur toute la surface de l'ASIC et sur les zones de contact des plaques de cuivre.</p></div></li>
-      <li><div class="step-content"><p><strong>Fixer l'adaptateur socket</strong> — Visse l'adaptateur 3D sur les 4 points de montage du PCB. Serre en croix progressivement — ne pas bloquer un côté avant les autres.</p></div></li>
-      <li><div class="step-content"><p><strong>Poser le radiateur</strong> — Pose le 52Pi Low-Profile Plus sur l'adaptateur. Aligne les trous de vis, fixe avec les vis fournies. Serre en croix. Vérifie que le contact est ferme et uniforme.</p></div></li>
-      <li><div class="step-content"><p><strong>Monter le shroud + ventilateur</strong> — Fixe le shroud imprimé sur les pattes du radiateur, puis clipse le Noctua NF-A6x15 dans le shroud. Branche le connecteur 4 broches PWM sur le header fan du Bitaxe.</p></div></li>
+      <li><div class="step-content"><p><strong>Clean the ASIC</strong> — Remove any stock heatsink if present. Clean the BM1370 die surface with isopropyl alcohol (90%+) and a cotton swab. Let dry for 60 seconds.</p></div></li>
+      <li><div class="step-content"><p><strong>Prepare copper shims (optional)</strong> — Place the two 0.3mm shims on either side of the heatsink base center, where the ASIC contact will be. Apply a thin layer of thermal paste between the shims and the heatsink base.</p></div></li>
+      <li><div class="step-content"><p><strong>Apply thermal paste</strong> — Place a small amount of Thermal Grizzly Kryonaut Extreme at the center of the die. Spread evenly across the full ASIC surface and over the copper shim contact zones.</p></div></li>
+      <li><div class="step-content"><p><strong>Mount the socket adapter</strong> — Screw the 3D-printed adapter onto the 4 PCB mounting points. Tighten in a cross pattern progressively — do not fully tighten one side before the others.</p></div></li>
+      <li><div class="step-content"><p><strong>Install the heatsink</strong> — Set the 52Pi Low-Profile Plus onto the adapter. Align the screw holes and fasten with the included screws. Cross-pattern tightening again. Verify firm, even contact.</p></div></li>
+      <li><div class="step-content"><p><strong>Mount shroud + fan</strong> — Attach the 3D-printed shroud to the heatsink brackets, then clip the Noctua NF-A6x15 into the shroud. Plug the 4-pin PWM connector into the Bitaxe fan header.</p></div></li>
     </ol>
 
     <div class="callout danger">
-      <p><strong>🚨 Ne jamais mettre sous tension sans radiateur fixé.</strong> L'ASIC BM1370 peut être endommagé irrémédiablement en quelques secondes sans refroidissement.</p>
+      <p><strong>🚨 Never power on without a properly mounted heatsink.</strong> The BM1370 ASIC can be permanently damaged in seconds without cooling.</p>
     </div>
   </section>
 
   <!-- 04 PSU -->
   <section class="section" id="psu">
-    <div class="section-header"><span class="section-num">04</span><h2>Câblage de l'alimentation Meanwell</h2></div>
-    <p>La <strong>Meanwell LRS-100-5</strong> (5V / 20A) peut alimenter jusqu'à 2 Bitaxe Gamma simultanément, même en overclock poussé (~20–25W par unité).</p>
+    <div class="section-header"><span class="section-num">04</span><h2>PSU wiring</h2></div>
+    <p>The <strong>Meanwell LRS-100-5</strong> (5V / 20A) can power up to 2 Bitaxe Gamma simultaneously, even when heavily overclocked (~20–25W per unit).</p>
 
     <div class="callout danger">
-      <p><strong>🚨 DANGER — 230V AC :</strong> Les bornes secteur sont sous tension mortelle. N'interviens jamais sur le câblage secteur sans avoir débranché l'alimentation du réseau électrique.</p>
+      <p><strong>🚨 DANGER — Mains voltage:</strong> The AC input terminals are at lethal voltage. Never work on the AC wiring without unplugging the unit from the wall first.</p>
     </div>
 
-    <h3>Côté AC (entrée secteur — 230V)</h3>
+    <h3>AC side (mains input — 120/240V)</h3>
     <div class="wiring-block">
-      <div class="wiring-row"><span class="wire-label wire-plus">L (Phase)</span><span class="wire-arrow">→</span><span class="wire-desc">Fil marron/rouge du câble secteur → borne L de la Meanwell</span></div>
-      <div class="wiring-row"><span class="wire-label wire-minus">N (Neutre)</span><span class="wire-arrow">→</span><span class="wire-desc">Fil bleu du câble secteur → borne N de la Meanwell</span></div>
-      <div class="wiring-row"><span class="wire-label wire-gnd">⏚ Terre</span><span class="wire-arrow">→</span><span class="wire-desc">Fil jaune/vert → borne de terre de la Meanwell. Toujours connecter.</span></div>
+      <div class="wiring-row"><span class="wire-label wire-plus">L (Live)</span><span class="wire-arrow">→</span><span class="wire-desc">Brown/black wire from mains cable → L terminal on Meanwell</span></div>
+      <div class="wiring-row"><span class="wire-label wire-minus">N (Neutral)</span><span class="wire-arrow">→</span><span class="wire-desc">Blue/white wire from mains cable → N terminal on Meanwell</span></div>
+      <div class="wiring-row"><span class="wire-label wire-gnd">⏚ Earth</span><span class="wire-arrow">→</span><span class="wire-desc">Green/yellow wire → Earth terminal on Meanwell. Always connect.</span></div>
     </div>
 
-    <h3>Côté DC (sortie 5V vers Bitaxe)</h3>
-    <p>Récupère les câbles fournis avec chaque Bitaxe. Dénude soigneusement les extrémités sur environ 8mm et connecte sur les bornes DC de sortie.</p>
+    <h3>DC side (5V output to Bitaxe)</h3>
+    <p>Reuse the cables included with each Bitaxe. Strip the ends cleanly to about 8mm and connect to the DC output terminals.</p>
     <div class="wiring-block">
-      <div class="wiring-row"><span class="wire-label wire-plus">+V (5V)</span><span class="wire-arrow">→</span><span class="wire-desc">Fil rouge/orange du câble Bitaxe → borne +V de la Meanwell</span></div>
-      <div class="wiring-row"><span class="wire-label wire-minus">-V (GND)</span><span class="wire-arrow">→</span><span class="wire-desc">Fil noir du câble Bitaxe → borne -V de la Meanwell</span></div>
+      <div class="wiring-row"><span class="wire-label wire-plus">+V (5V)</span><span class="wire-arrow">→</span><span class="wire-desc">Red/orange Bitaxe cable wire → +V terminal on Meanwell</span></div>
+      <div class="wiring-row"><span class="wire-label wire-minus">-V (GND)</span><span class="wire-arrow">→</span><span class="wire-desc">Black Bitaxe cable wire → -V terminal on Meanwell</span></div>
     </div>
 
-    <h3>Réglage de la tension de sortie</h3>
-    <p>La Meanwell a un potentiomètre de réglage fin. Avec un multimètre, mesure la tension DC et ajuste pour obtenir exactement <strong>5,00V</strong> (tolérance : 4,95–5,05V) avant de brancher les Bitaxe.</p>
+    <h3>Output voltage adjustment</h3>
+    <p>The Meanwell has a fine-adjustment trimmer potentiometer. Using a multimeter, measure the DC output voltage and adjust to exactly <strong>5.00V</strong> (tolerance: 4.95–5.05V) before connecting the Bitaxe units.</p>
 
     <div class="callout info">
-      <p><strong>ℹ Capacité :</strong> La LRS-100-5 fournit jusqu'à 20A. 2 Bitaxe à 1 000 MHz consomment ~80W soit ~16A — on reste dans les clous avec une bonne marge de sécurité.</p>
+      <p><strong>ℹ Capacity note:</strong> The LRS-100-5 delivers up to 20A continuous. Two Bitaxe at 1,000 MHz draw ~80W total (~16A) — well within the safe operating range with a good margin.</p>
     </div>
   </section>
 
-  <!-- 05 CONFIG INITIALE -->
-  <section class="section" id="overclock">
-    <div class="section-header"><span class="section-num">05</span><h2>Configuration initiale dans AxeOS</h2></div>
-    <p>Avant de lancer le benchmark automatisé, configure le Bitaxe à des valeurs de départ raisonnables via l'interface web <strong>AxeOS</strong> (accès via l'IP du mineur dans ton navigateur).</p>
+  <!-- 05 AXEOS -->
+  <section class="section" id="axeos">
+    <div class="section-header"><span class="section-num">05</span><h2>Initial AxeOS setup</h2></div>
+    <p>Before launching the automated benchmark, configure the Bitaxe to safe starting values via the <strong>AxeOS</strong> web interface (access it by typing the miner's IP address in your browser).</p>
 
     <div class="callout warn">
-      <p><strong>⚠ Valeurs de départ recommandées :</strong> Commence à <strong>500 MHz / 1 150 mV</strong> — c'est le point de départ par défaut du script de benchmark. Ne pas démarrer directement en territoire extrême.</p>
+      <p><strong>⚠ Recommended starting values:</strong> Begin at <strong>500 MHz / 1,150 mV</strong> — this is the benchmark script's default starting point. Never start directly in extreme territory.</p>
     </div>
 
-    <h3>Réglages à vérifier dans AxeOS avant le benchmark</h3>
+    <h3>Settings to verify in AxeOS before benchmarking</h3>
     <table class="perf-table">
-      <thead><tr><th>Paramètre</th><th>Valeur recommandée</th><th>Note</th></tr></thead>
+      <thead><tr><th>Setting</th><th>Recommended value</th><th>Note</th></tr></thead>
       <tbody>
-        <tr><td>Frequency</td><td class="val">500 MHz</td><td>Point de départ — le script montera automatiquement</td></tr>
-        <tr><td>Core Voltage</td><td class="val">1 150 mV</td><td>Tension de départ sécurisée</td></tr>
-        <tr><td>Fan Speed</td><td class="val">100%</td><td>Maximum pendant le benchmark pour données comparables</td></tr>
-        <tr><td>Pool / Wallet</td><td class="val">Configuré</td><td>Doit être actif pour que le hashrate soit mesuré correctement</td></tr>
+        <tr><td>Frequency</td><td class="val">500 MHz</td><td>Starting point — the script will increase automatically</td></tr>
+        <tr><td>Core Voltage</td><td class="val">1,150 mV</td><td>Safe starting voltage</td></tr>
+        <tr><td>Fan Speed</td><td class="val">100%</td><td>Maximum during benchmark for comparable data</td></tr>
+        <tr><td>Pool / Wallet</td><td class="val">Configured</td><td>Must be active for hashrate to be measured correctly</td></tr>
       </tbody>
     </table>
 
-    <p>Une fois ces réglages en place et le Bitaxe stable (laisser tourner 5–10 min), tu es prêt à lancer le benchmark automatisé.</p>
+    <p>Once these settings are in place and the Bitaxe is stable (let it run for 5–10 min), you're ready to launch the automated benchmark.</p>
   </section>
 
   <!-- 06 BENCHMARK -->
   <section class="section" id="benchmark">
-    <div class="section-header"><span class="section-num">06</span><h2>Script de benchmark Python</h2></div>
-    <p>Le script <strong>Bitaxe-Hashrate-Benchmark</strong> (par thomasKn) automatise entièrement la recherche du meilleur couple fréquence/voltage pour ton ASIC spécifique. Il teste des paliers progressifs, surveille la température en temps réel et applique automatiquement les meilleurs réglages trouvés à la fin.</p>
+    <div class="section-header"><span class="section-num">06</span><h2>Python benchmark script</h2></div>
+    <p>The <strong>Bitaxe-Hashrate-Benchmark</strong> script (by thomasKn) fully automates finding the best frequency/voltage pair for your specific ASIC. It tests progressive steps, monitors temperature in real time, and automatically applies the best stable settings found at the end.</p>
 
     <h3>Installation</h3>
-    <p><strong>Prérequis :</strong> Python 3.11 ou supérieur, et ton Bitaxe accessible sur le réseau local.</p>
+    <p><strong>Prerequisites:</strong> Python 3.11 or higher, and your Bitaxe reachable on the local network.</p>
 
     <div class="code-block">
-<span class="comment"># 1. Cloner le dépôt</span>
+<span class="comment"># 1. Clone the repository</span>
 git clone https://github.com/thomasKn/Bitaxe-Hashrate-Benchmark.git
 cd Bitaxe-Hashrate-Benchmark
 
-<span class="comment"># 2. Créer et activer un environnement virtuel</span>
+<span class="comment"># 2. Create and activate a virtual environment</span>
 python -m venv venv
 
-<span class="comment"># Sur macOS / Linux :</span>
+<span class="comment"># On macOS / Linux:</span>
 source venv/bin/activate
-<span class="comment"># Sur Windows :</span>
+<span class="comment"># On Windows:</span>
 venv\Scripts\activate
 
-<span class="comment"># 3. Installer les dépendances</span>
+<span class="comment"># 3. Install dependencies</span>
 pip install -r requirements.txt
     </div>
 
-    <h3>Utilisation</h3>
-    <p>Lance le script en lui passant l'adresse IP de ton Bitaxe. Tu peux optionnellement spécifier la tension et la fréquence de départ.</p>
+    <h3>Usage</h3>
+    <p>Run the script with your Bitaxe's IP address. You can optionally specify a starting voltage and frequency.</p>
 
     <div class="code-block">
-<span class="comment"># Commande de base (départ par défaut : 500 MHz / 1 150 mV)</span>
+<span class="comment"># Basic command (defaults: 500 MHz / 1,150 mV)</span>
 <span class="cmd">python</span> bitaxe_hashrate_benchmark.py <span class="param">192.168.x.xxx</span>
 
-<span class="comment"># Avec paramètres de départ personnalisés</span>
+<span class="comment"># With custom starting parameters</span>
 <span class="cmd">python</span> bitaxe_hashrate_benchmark.py <span class="param">192.168.x.xxx</span> -v <span class="param">1175</span> -f <span class="param">600</span>
 
-<span class="comment"># Options disponibles :</span>
-<span class="comment">#  -v, --voltage    Tension de départ en mV (défaut: 1150)</span>
-<span class="comment">#  -f, --frequency  Fréquence de départ en MHz (défaut: 500)</span>
+<span class="comment"># Available options:</span>
+<span class="comment">#  -v, --voltage    Starting voltage in mV (default: 1150)</span>
+<span class="comment">#  -f, --frequency  Starting frequency in MHz (default: 500)</span>
     </div>
 
     <div class="callout info">
-      <p><strong>ℹ Trouver l'IP de ton Bitaxe :</strong> Connecte-toi à l'interface de ton routeur et cherche un appareil nommé "bitaxe" ou "esp32". Alternativement, utilise un scanner réseau comme <code>nmap -sn 192.168.x.0/24</code> dans un terminal.</p>
+      <p><strong>ℹ Finding your Bitaxe's IP:</strong> Log into your router's admin panel and look for a device named "bitaxe" or "esp32". Alternatively, run <code>nmap -sn 192.168.x.0/24</code> in a terminal to scan your network.</p>
     </div>
 
-    <h3>Comment fonctionne le script</h3>
+    <h3>How the script works</h3>
     <div class="bench-flow">
       <div class="bench-step">
         <span class="bench-step-num">Init</span>
-        <div class="bench-step-body"><strong>Récupération des infos système</strong> — Le script lit la configuration actuelle du Bitaxe via l'API AxeOS (<code>/api/system/info</code>, <code>/api/system/asic</code>) : nombre de cœurs, voltage, fréquence actuels.</div>
+        <div class="bench-step-body"><strong>System info fetch</strong> — The script reads the current Bitaxe configuration via the AxeOS API (<code>/api/system/info</code>, <code>/api/system/asic</code>): core count, current voltage, current frequency.</div>
       </div>
       <div class="bench-step">
-        <span class="bench-step-num">Palier</span>
-        <div class="bench-step-body"><strong>Application des réglages et stabilisation</strong> — Le script applique le couple voltage/fréquence via PATCH <code>/api/system</code>, redémarre le Bitaxe et attend <strong>90 secondes</strong> pour que le hashrate se stabilise.</div>
+        <span class="bench-step-num">Step</span>
+        <div class="bench-step-body"><strong>Apply settings and stabilize</strong> — The script pushes the voltage/frequency pair via PATCH <code>/api/system</code>, restarts the Bitaxe, then waits <strong>90 seconds</strong> for the hashrate to stabilize.</div>
       </div>
       <div class="bench-step">
-        <span class="bench-step-num">Mesure</span>
-        <div class="bench-step-body"><strong>Benchmark de 10 minutes</strong> — Échantillonnage toutes les 15 secondes : hashrate, température ASIC, température VReg, tension d'entrée, consommation en watts, pourcentage d'erreurs. Les 3 valeurs les plus hautes et les 3 plus basses de hashrate sont supprimées pour éliminer les outliers.</div>
+        <span class="bench-step-num">Measure</span>
+        <div class="bench-step-body"><strong>10-minute benchmark</strong> — Samples every 15 seconds: hashrate, ASIC temperature, VReg temperature, input voltage, power draw in watts, error percentage. The 3 highest and 3 lowest hashrate readings are discarded to eliminate outliers.</div>
       </div>
       <div class="bench-step">
-        <span class="bench-step-num">Décision</span>
-        <div class="bench-step-body"><strong>Logique de progression</strong> — Si le hashrate est dans les 94% de la valeur théorique attendue : on augmente la fréquence de <strong>+25 MHz</strong>. Si le hashrate est trop bas : on baisse la fréquence d'un cran et on augmente la tension de <strong>+20 mV</strong>. On répète jusqu'aux limites thermiques ou de stabilité.</div>
+        <span class="bench-step-num">Decide</span>
+        <div class="bench-step-body"><strong>Progression logic</strong> — If hashrate is within 94% of the theoretical maximum: increase frequency by <strong>+25 MHz</strong>. If hashrate is too low: step frequency back down and increase voltage by <strong>+20 mV</strong>. Repeat until thermal or stability limits are hit.</div>
       </div>
       <div class="bench-step">
-        <span class="bench-step-num">Fin</span>
-        <div class="bench-step-body"><strong>Application des meilleurs réglages</strong> — Le script applique automatiquement la configuration avec le meilleur hashrate stable, sauvegarde tous les résultats dans un fichier JSON horodaté, et affiche un top 5 hashrate + top 5 efficacité.</div>
+        <span class="bench-step-num">Done</span>
+        <div class="bench-step-body"><strong>Apply best settings</strong> — The script automatically applies the highest stable hashrate configuration, saves all results to a timestamped JSON file, and prints a top-5 hashrate + top-5 efficiency summary.</div>
       </div>
     </div>
 
-    <h3>Limites de sécurité intégrées</h3>
+    <h3>Built-in safety limits</h3>
     <div class="config-grid">
       <div class="config-card">
         <p class="config-key">max_temp</p>
         <p class="config-val">66°C</p>
-        <p class="config-desc">Température ASIC max — arrêt immédiat si dépassée</p>
+        <p class="config-desc">ASIC chip max temp — immediate stop if exceeded</p>
       </div>
       <div class="config-card">
         <p class="config-key">max_vr_temp</p>
         <p class="config-val">86°C</p>
-        <p class="config-desc">Température régulateur de tension max</p>
+        <p class="config-desc">Voltage regulator max temperature</p>
       </div>
       <div class="config-card">
         <p class="config-key">max_allowed_voltage</p>
-        <p class="config-val">1 400 mV</p>
-        <p class="config-desc">Plafond absolu de tension core</p>
+        <p class="config-val">1,400 mV</p>
+        <p class="config-desc">Absolute core voltage ceiling</p>
       </div>
       <div class="config-card">
         <p class="config-key">max_allowed_frequency</p>
-        <p class="config-val">1 200 MHz</p>
-        <p class="config-desc">Plafond absolu de fréquence</p>
+        <p class="config-val">1,200 MHz</p>
+        <p class="config-desc">Absolute frequency ceiling</p>
       </div>
       <div class="config-card">
         <p class="config-key">max_power</p>
         <p class="config-val">50 W</p>
-        <p class="config-desc">Coupure si consommation dépasse 50W</p>
+        <p class="config-desc">Cutoff if power draw exceeds 50W</p>
       </div>
       <div class="config-card">
         <p class="config-key">min_input_voltage</p>
-        <p class="config-val">4 800 mV</p>
-        <p class="config-desc">Coupure si tension d'entrée trop basse (PSU insuffisante)</p>
+        <p class="config-val">4,800 mV</p>
+        <p class="config-desc">Cutoff if input voltage drops too low (underpowered PSU)</p>
       </div>
     </div>
 
     <div class="callout warn">
-      <p><strong>⚠ Durée totale :</strong> Chaque palier prend ~12 minutes (90s stabilisation + 10min mesure). Un benchmark complet de 400 MHz à 1 000+ MHz peut prendre <strong>plusieurs heures</strong>. Planifie en conséquence et ne coupe pas l'alimentation pendant le processus.</p>
+      <p><strong>⚠ Total duration:</strong> Each step takes ~12 minutes (90s stabilization + 10min measurement). A full benchmark from 400 MHz to 1,000+ MHz can take <strong>several hours</strong>. Plan accordingly and do not cut power during the process.</p>
     </div>
 
-    <h3>Installation via Docker (alternative)</h3>
+    <h3>Docker alternative</h3>
     <div class="code-block">
-<span class="comment"># Construire l'image</span>
+<span class="comment"># Build the image</span>
 docker build -t bitaxe-benchmark .
 
-<span class="comment"># Lancer le benchmark</span>
+<span class="comment"># Run the benchmark</span>
 docker run --rm bitaxe-benchmark <span class="param">192.168.x.xxx</span> -v <span class="param">1150</span> -f <span class="param">500</span>
     </div>
   </section>
 
-  <!-- 07 RÉSULTATS -->
-  <section class="section" id="resultats">
-    <div class="section-header"><span class="section-num">07</span><h2>Lire et appliquer les résultats</h2></div>
-    <p>À la fin du benchmark, le script génère un fichier JSON nommé <code>bitaxe_benchmark_results_&lt;IP&gt;_&lt;date&gt;.json</code> et affiche un résumé dans le terminal.</p>
+  <!-- 07 RESULTS -->
+  <section class="section" id="results">
+    <div class="section-header"><span class="section-num">07</span><h2>Reading & applying results</h2></div>
+    <p>At the end of the benchmark, the script generates a JSON file named <code>bitaxe_benchmark_results_&lt;IP&gt;_&lt;date&gt;.json</code> and prints a summary in the terminal.</p>
 
-    <h3>Structure du fichier de résultats</h3>
-    <p>Le JSON contient trois sections principales :</p>
+    <h3>Output file structure</h3>
     <div class="code-block">
 {
-  <span class="param">"all_results"</span>: [ ... ],         <span class="comment">// Tous les paliers testés</span>
+  <span class="param">"all_results"</span>: [ ... ],         <span class="comment">// All tested steps</span>
 
-  <span class="param">"top_performers"</span>: [             <span class="comment">// Top 5 par hashrate</span>
+  <span class="param">"top_performers"</span>: [             <span class="comment">// Top 5 by hashrate</span>
     {
       "rank": 1,
       "coreVoltage": 1350,          <span class="comment">// mV</span>
       "frequency": 950,             <span class="comment">// MHz</span>
       "averageHashRate": 1940.5,    <span class="comment">// GH/s</span>
       "averageTemperature": 38.2,   <span class="comment">// °C (ASIC)</span>
-      "averageVRTemp": 72.1,        <span class="comment">// °C (régulateur)</span>
-      "efficiencyJTH": 17.8,        <span class="comment">// J/TH (plus bas = mieux)</span>
+      "averageVRTemp": 72.1,        <span class="comment">// °C (voltage regulator)</span>
+      "efficiencyJTH": 17.8,        <span class="comment">// J/TH (lower = better)</span>
       "averageErrorPercentage": 0.3,
       "isStable": true
     }
   ],
 
-  <span class="param">"most_efficient"</span>: [ ... ]      <span class="comment">// Top 5 par efficacité (J/TH)</span>
+  <span class="param">"most_efficient"</span>: [ ... ]      <span class="comment">// Top 5 by efficiency (J/TH)</span>
 }
     </div>
 
-    <h3>Quelle configuration choisir ?</h3>
+    <h3>Which configuration to pick?</h3>
     <table class="perf-table">
-      <thead><tr><th>Objectif</th><th>Regarde</th><th>Critère de sélection</th></tr></thead>
+      <thead><tr><th>Goal</th><th>Look at</th><th>Selection criteria</th></tr></thead>
       <tbody>
-        <tr><td>Hashrate maximum</td><td class="val">top_performers[0]</td><td>Meilleur averageHashRate avec isStable: true</td></tr>
-        <tr><td>Efficacité maximale</td><td class="val">most_efficient[0]</td><td>Plus bas efficiencyJTH (J/TH) — moins de watts par térahash</td></tr>
-        <tr><td>Équilibre performance/chaleur</td><td>Les deux listes</td><td>Meilleur hashrate avec averageTemperature &lt; 55°C</td></tr>
-        <tr><td>Mode silencieux</td><td>all_results</td><td>Palier inférieur au top, avec température ASIC &lt; 45°C</td></tr>
+        <tr><td>Maximum hashrate</td><td class="val">top_performers[0]</td><td>Best averageHashRate with isStable: true</td></tr>
+        <tr><td>Maximum efficiency</td><td class="val">most_efficient[0]</td><td>Lowest efficiencyJTH (J/TH) — fewer watts per terahash</td></tr>
+        <tr><td>Balanced performance/heat</td><td>Both lists</td><td>Best hashrate with averageTemperature &lt; 55°C</td></tr>
+        <tr><td>Silent / low power mode</td><td>all_results</td><td>A step below the top, with ASIC temp &lt; 45°C</td></tr>
       </tbody>
     </table>
 
     <div class="callout">
-      <p><strong>🎰 Silicon Lottery :</strong> Chaque puce BM1370 est unique. Certaines atteignent 1 000+ MHz facilement, d'autres plafonnent à 700–800 MHz. C'est aléatoire à la fabrication — le benchmark est là exactement pour ça : trouver le plafond réel de ton ASIC spécifique.</p>
+      <p><strong>🎰 Silicon lottery:</strong> Every BM1370 chip is unique. Some reach 1,000+ MHz easily, others top out at 700–800 MHz. It's random from the factory — the benchmark exists precisely to find the actual ceiling of your specific chip.</p>
     </div>
 
-    <h3>Appliquer manuellement la configuration retenue</h3>
-    <p>Le script applique automatiquement les meilleurs réglages à la fin. Si tu veux en changer manuellement plus tard, va dans AxeOS → Settings et entre les valeurs de voltage et fréquence du résultat choisi.</p>
-
-    <div class="callout warn">
-      <p><strong>⚠ Température ambiante :</strong> Les résultats du benchmark dépendent de la température de la pièce. Si la température ambiante change de façon significative (été vs hiver, etc.), relance un benchmark pour recalibrer.</p>
-    </div>
-
-    <h3>Résultats de référence avec le 52Pi Low-Profile Plus + Noctua NF-A6x15</h3>
-    <p>Ces données issues de tests réels te donnent une idée de ce qui est atteignable (les tiennes varieront selon ta silicon lottery).</p>
+    <h3>Reference results — 52Pi Low-Profile Plus + Noctua NF-A6x15</h3>
+    <p>Real-world test data to give you a sense of what's achievable (your results will vary based on your silicon lottery).</p>
     <table class="perf-table">
-      <thead><tr><th>Fréquence</th><th>Voltage core</th><th>Hashrate</th><th>Temp. ASIC</th><th>Temp. VReg</th><th>Efficacité</th></tr></thead>
+      <thead><tr><th>Frequency</th><th>Core Voltage</th><th>Hashrate</th><th>ASIC Temp</th><th>VReg Temp</th><th>Efficiency</th></tr></thead>
       <tbody>
-        <tr><td class="val">400 MHz</td><td class="val">1 150 mV</td><td class="val">0.82 Th/s</td><td class="good">18,9°C</td><td class="val">43°C</td><td class="val">16,0 J/TH</td></tr>
-        <tr><td class="val">525 MHz</td><td class="val">1 150 mV</td><td class="val">1.07 Th/s</td><td class="good">19,8°C</td><td class="val">49°C</td><td class="val">12,8 J/TH</td></tr>
-        <tr><td class="val">596 MHz</td><td class="val">1 200 mV</td><td class="val">1.22 Th/s</td><td class="good">25,6°C</td><td class="val">55°C</td><td class="val">14,6 J/TH</td></tr>
-        <tr><td class="val">625 MHz</td><td class="val">1 250 mV</td><td class="val">1.27 Th/s</td><td class="good">29,8°C</td><td class="val">61°C</td><td class="val">15,6 J/TH</td></tr>
-        <tr><td class="val">650 MHz</td><td class="val">1 300 mV</td><td class="val">1.33 Th/s</td><td class="good">32,8°C</td><td class="val">69°C</td><td class="val">16,3 J/TH</td></tr>
-        <tr><td class="val">675 MHz</td><td class="val">1 325 mV</td><td class="val">1.38 Th/s</td><td class="good">36,1°C</td><td class="warn">74°C</td><td class="val">16,3 J/TH</td></tr>
-        <tr style="background:rgba(249,115,22,0.05)"><td class="val">1 000 MHz</td><td class="val">1 400 mV</td><td class="good">2.04 Th/s</td><td class="warn">44,6°C</td><td class="warn">81°C</td><td class="val">17,6 J/TH</td></tr>
+        <tr><td class="val">400 MHz</td><td class="val">1,150 mV</td><td class="val">0.82 Th/s</td><td class="good">18.9°C</td><td class="val">43°C</td><td class="val">16.0 J/TH</td></tr>
+        <tr><td class="val">525 MHz</td><td class="val">1,150 mV</td><td class="val">1.07 Th/s</td><td class="good">19.8°C</td><td class="val">49°C</td><td class="val">12.8 J/TH</td></tr>
+        <tr><td class="val">596 MHz</td><td class="val">1,200 mV</td><td class="val">1.22 Th/s</td><td class="good">25.6°C</td><td class="val">55°C</td><td class="val">14.6 J/TH</td></tr>
+        <tr><td class="val">625 MHz</td><td class="val">1,250 mV</td><td class="val">1.27 Th/s</td><td class="good">29.8°C</td><td class="val">61°C</td><td class="val">15.6 J/TH</td></tr>
+        <tr><td class="val">650 MHz</td><td class="val">1,300 mV</td><td class="val">1.33 Th/s</td><td class="good">32.8°C</td><td class="val">69°C</td><td class="val">16.3 J/TH</td></tr>
+        <tr><td class="val">675 MHz</td><td class="val">1,325 mV</td><td class="val">1.38 Th/s</td><td class="good">36.1°C</td><td class="warn">74°C</td><td class="val">16.3 J/TH</td></tr>
+        <tr style="background:rgba(249,115,22,0.05)"><td class="val">1,000 MHz</td><td class="val">1,400 mV</td><td class="good">2.04 Th/s</td><td class="warn">44.6°C</td><td class="warn">81°C</td><td class="val">17.6 J/TH</td></tr>
       </tbody>
     </table>
-    <p style="font-size:13px">Source : PlebBase.com — tests de 30 min (400–675 MHz) et 2h (1 000 MHz), ventilateur à 100%, mode pull.</p>
+    <p style="font-size:13px">Source: PlebBase.com — 30-min tests (400–675 MHz) and 2h test (1,000 MHz), fan at 100%, pull airflow mode.</p>
+
+    <div class="callout warn">
+      <p><strong>⚠ Ambient temperature matters:</strong> Benchmark results depend on room temperature. If the ambient temperature changes significantly (summer vs winter, new location), re-run the benchmark to recalibrate.</p>
+    </div>
   </section>
 
-  <!-- 08 TOUR QUAD -->
-  <section class="section" id="tour">
-    <div class="section-header"><span class="section-num">08</span><h2>Tour de refroidissement quad (optionnel)</h2></div>
-    <p>Pour regrouper <strong>4 Bitaxe Gamma</strong> dans une installation compacte avec un seul ventilateur 120mm.</p>
+  <!-- 08 TOWER -->
+  <section class="section" id="tower">
+    <div class="section-header"><span class="section-num">08</span><h2>Quad cooling tower (optional)</h2></div>
+    <p>Want to stack <strong>4 Bitaxe Gamma</strong> in a compact build with a single 120mm fan? The 3D-printed quad cooling tower makes it possible.</p>
     <div class="tower-section">
-      <h3 style="margin-top:0">Ce qu'il faut pour la tour ×4</h3>
-      <p>• 4× Bitaxe Gamma (chacun avec son 52Pi Low-Profile Plus + shroud Noctua)</p>
-      <p>• 1× Tour imprimée en 3D — <a href="https://makerworld.com/fr/models/1239937" target="_blank" style="color:var(--orange)">MakerWorld</a></p>
-      <p>• 1× Ventilateur 120mm (Noctua NF-F12 ou NF-P12 recommandé)</p>
-      <p>• 2× Meanwell LRS-100-5 (une par paire de Bitaxe overclockés)</p>
+      <h3 style="margin-top:0">What you need for the ×4 tower</h3>
+      <p>• 4× Bitaxe Gamma (each with its 52Pi Low-Profile Plus + Noctua shroud)</p>
+      <p>• 1× 3D-printed tower — <a href="https://makerworld.com/fr/models/1239937" target="_blank" style="color:var(--orange)">MakerWorld</a></p>
+      <p>• 1× 120mm fan (Noctua NF-F12 or NF-P12 recommended)</p>
+      <p>• 2× Meanwell LRS-100-5 (one per pair of overclocked Bitaxe)</p>
     </div>
     <div class="callout info" style="margin-top:16px">
-      <p><strong>ℹ Alimentation pour 4 Bitaxe :</strong> 4 Bitaxe à 1 000 MHz = ~160W total. Une seule LRS-100-5 (100W max) ne suffit pas. Prévois 2× LRS-100-5 ou une LRS-200-5 (5V/40A).</p>
+      <p><strong>ℹ Power for 4 Bitaxe:</strong> 4 Bitaxe at 1,000 MHz = ~160W total. A single LRS-100-5 (100W max) is not enough. Plan for 2× LRS-100-5, or upgrade to a LRS-200-5 (5V/40A).</p>
     </div>
   </section>
 
-  <!-- 09 CONSEILS -->
-  <section class="section" id="conseils">
-    <div class="section-header"><span class="section-num">09</span><h2>Conseils & dépannage</h2></div>
+  <!-- 09 TIPS -->
+  <section class="section" id="tips">
+    <div class="section-header"><span class="section-num">09</span><h2>Tips & troubleshooting</h2></div>
 
     <div class="tip-grid">
       <div class="tip-card">
         <p class="tip-icon">🌡️</p>
-        <p class="tip-title">Températures cibles</p>
-        <p class="tip-body">ASIC : vise &lt;60°C à charge max. VReg : reste sous 85°C. Le script coupe à 66°C ASIC / 86°C VReg automatiquement.</p>
+        <p class="tip-title">Target temperatures</p>
+        <p class="tip-body">ASIC: aim for &lt;60°C at max load. VReg: stay under 85°C. The script auto-cuts at 66°C ASIC / 86°C VReg.</p>
       </div>
       <div class="tip-card">
         <p class="tip-icon">📊</p>
-        <p class="tip-title">HW Errors dans AxeOS</p>
-        <p class="tip-body">Un taux &gt;2% indique une instabilité. Le script la détecte et monte la tension de +20 mV automatiquement.</p>
+        <p class="tip-title">HW Errors in AxeOS</p>
+        <p class="tip-body">An error rate &gt;2% means instability. The script handles this automatically by bumping voltage +20 mV.</p>
       </div>
       <div class="tip-card">
         <p class="tip-icon">🧵</p>
-        <p class="tip-title">Matériau d'impression</p>
-        <p class="tip-body">PETG ou ASA pour les pièces proches du radiateur (résistance à ~80–100°C). PLA interdit dans ce contexte.</p>
+        <p class="tip-title">Print material</p>
+        <p class="tip-body">PETG or ASA for parts near the heatsink (rated to ~80–100°C). PLA is not suitable — it will warp.</p>
       </div>
       <div class="tip-card">
         <p class="tip-icon">🔁</p>
-        <p class="tip-title">Renouveler la pâte</p>
-        <p class="tip-body">Tous les 12–18 mois, ou si tu observes une dérive des températures à réglages constants. Toujours nettoyer avant de réappliquer.</p>
+        <p class="tip-title">Renew thermal paste</p>
+        <p class="tip-body">Every 12–18 months, or if you notice temperature drift at constant settings. Always clean thoroughly before reapplying.</p>
       </div>
       <div class="tip-card">
         <p class="tip-icon">⚡</p>
-        <p class="tip-title">Câblage propre</p>
-        <p class="tip-body">Utilise du 16 AWG pour les câbles DC longs. Un câble trop fin crée une chute de tension qui déstabilise le mineur.</p>
+        <p class="tip-title">Clean wiring</p>
+        <p class="tip-body">Use 16 AWG for DC cables. Undersized wire causes voltage drop that destabilizes the miner under load.</p>
       </div>
       <div class="tip-card">
         <p class="tip-icon">🔄</p>
-        <p class="tip-title">Relancer le benchmark</p>
-        <p class="tip-body">Relance le benchmark si la température ambiante change significativement (saisons) ou si tu changes de setup de refroidissement.</p>
+        <p class="tip-title">Re-run the benchmark</p>
+        <p class="tip-body">Re-run if ambient temperature changes significantly (seasons change, new room) or if you modify the cooling setup.</p>
       </div>
     </div>
 
-    <h3 style="margin-top:28px">Dépannage courant</h3>
+    <h3 style="margin-top:28px">Common troubleshooting</h3>
     <table class="perf-table">
-      <thead><tr><th>Symptôme</th><th>Cause probable</th><th>Solution</th></tr></thead>
+      <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
       <tbody>
-        <tr><td>Bitaxe ne démarre pas</td><td>Tension PSU incorrecte ou connexion DC lâche</td><td>Vérifier la tension (5V exact), resserrer les bornes</td></tr>
-        <tr><td>Script ne se connecte pas</td><td>IP incorrecte ou Bitaxe pas sur le même réseau</td><td>Vérifier l'IP dans AxeOS ou via le routeur</td></tr>
-        <tr><td>Arrêt thermique pendant benchmark</td><td>Refroidissement insuffisant ou pâte mal appliquée</td><td>Vérifier le montage, réappliquer la pâte thermique</td></tr>
-        <tr><td>HW errors élevées (>5%)</td><td>Overclock trop agressif pour cet ASIC</td><td>Le script gère ça — sinon baisser manuellement la fréquence</td></tr>
-        <tr><td>Tension d'entrée &lt;4,8V (coupure)</td><td>Câbles trop fins ou PSU sous-dimensionnée</td><td>Câble 16 AWG, vérifier réglage potentiomètre Meanwell</td></tr>
-        <tr><td>Benchmark très long sans progression</td><td>ASIC plafonne tôt (silicon lottery défavorable)</td><td>Normal — le script trouvera quand même le meilleur palier stable</td></tr>
+        <tr><td>Bitaxe won't start</td><td>Wrong PSU voltage or loose DC connection</td><td>Check voltage is 5V, tighten terminals</td></tr>
+        <tr><td>Script can't connect</td><td>Wrong IP or Bitaxe on different network segment</td><td>Check IP in AxeOS or via your router admin panel</td></tr>
+        <tr><td>Thermal shutdown during benchmark</td><td>Insufficient cooling or poor thermal paste application</td><td>Check heatsink mounting, reapply thermal paste</td></tr>
+        <tr><td>High HW errors (&gt;5%)</td><td>Overclock too aggressive for this ASIC</td><td>Script handles this — or manually reduce frequency</td></tr>
+        <tr><td>Input voltage &lt;4.8V (cutoff)</td><td>Undersized cables or PSU not adjusted to 5V</td><td>Use 16 AWG wire, check Meanwell trimmer adjustment</td></tr>
+        <tr><td>Benchmark stalls with no progress</td><td>ASIC hits its ceiling early (unfavorable silicon lottery)</td><td>Normal — the script will still find the best stable step</td></tr>
       </tbody>
     </table>
   </section>
@@ -601,8 +586,8 @@ docker run --rm bitaxe-benchmark <span class="param">192.168.x.xxx</span> -v <sp
 </main>
 
 <footer>
-  <span>// Tutoriel Bitaxe Gamma Overclock — Sources : plebbase.com & github.com/thomasKn/Bitaxe-Hashrate-Benchmark</span>
-  <span>Pour les plebs québécois ⚡</span>
+  <span>// Bitaxe Gamma Overclock Tutorial — Sources: plebbase.com & github.com/thomasKn/Bitaxe-Hashrate-Benchmark</span>
+  <span>Made for Bitcoin plebs ⚡</span>
 </footer>
 
 </body>
